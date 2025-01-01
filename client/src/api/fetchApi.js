@@ -1,4 +1,4 @@
-const BASE_URL = '';
+const BASE_URL = 'http://localhost:3030';
 
 async function requester(url, options) {
   const response = await fetch(BASE_URL + url, options);
