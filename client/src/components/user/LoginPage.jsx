@@ -1,26 +1,35 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
 import userApi from '../../api/user';
+import { setSession } from '../../util/sesionStorage';
+import ErrorModal from '../ErrorModal';
+
 
 export default function LoginPage() {
+    const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
 
     async function onSubmit(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
         const { email, password } = Object.fromEntries(formData);
         try {
-
             const user = await userApi.login(email, password);
-            console.log(user);
-
-        } catch (error) {
-            alert(error.message);
+            setSession(user);
+            navigate('/');
+        } catch (err) {
+            setError(err.message);
         }
-
-
+    }
+    function onClose() {
+        setError(null);
     }
     return (
         //  < !--Login Page(Only for Guest users ) -->
         <section id="login-page" className="auth">
+            {error && <ErrorModal error={{ error, onClose }} />}
             <form onSubmit={onSubmit} id="login">
                 <div className="container">
                     <div className="brand-logo"></div>
