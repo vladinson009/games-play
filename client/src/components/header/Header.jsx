@@ -13,6 +13,7 @@ export default function Header() {
             {isLoggedIn ? <div id="user">
                 <NavLink className={({ isActive }) => isActive ? 'active' : ''} to="/games/create">Create Game</NavLink>
                 <NavLink className={({ isActive }) => isActive ? 'active' : ''} to="/users/logout">Logout</NavLink>
+                <em>{context.session.email}</em>
             </div> : <div id="guest">
                 <NavLink className={({ isActive }) => isActive ? 'active' : ''} to="/users/login">Login</NavLink>
                 <NavLink className={({ isActive }) => isActive ? 'active' : ''} to="/users/register">Register</NavLink>
