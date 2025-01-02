@@ -12,6 +12,7 @@ import RegisterPage from './components/user/RegisterPage';
 import LogoutPage from './components/user/LogoutPage.jsx';
 
 import sessionCtx from './util/sessionContext.js';
+import DeletePage from './components/games/DeletePage.jsx';
 
 function App() {
   const [session, setSession] = useState({})
@@ -33,7 +34,8 @@ function App() {
             <Route path="catalogue" element={<CataloguePage />} />
             <Route path="create" element={<CreatePage />} />
             <Route path="details/:gameId" element={<DetailsPage />} />
-            <Route path="edit" element={<EditPage />} />
+            <Route path="edit/:gameId" element={<EditPage />} />
+            <Route path="delete/:gameId" element={<DeletePage />} />
           </Route>
           <Route path="/users">
             <Route path="login" element={<LoginPage />} />
