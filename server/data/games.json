@@ -1,0 +1,32 @@
+{
+  "be7a577f-62a1-448a-ab58-fe8d523afde4": {
+    "title": "Counter Strike",
+    "category": "First-person",
+    "maxLevel": "1",
+    "imageUrl": "https://loadcs.com/images/full/hl_2022-10-16_23-37-57-320.jpg",
+    "summary": "Counter-Strike 1.5 is a tactical first-person shooter where teams of terrorists and counter-terrorists battle to complete objectives, such as planting or defusing bombs, or rescuing hostages. Released in 2002, it became a highly influential multiplayer game, emphasizing strategy, teamwork, and skillful shooting in fast-paced, competitive matches.",
+    "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+    "comments": [],
+    "_id": "be7a577f-62a1-448a-ab58-fe8d523afde4"
+  },
+  "2f776370-494b-4d6a-a4ca-cd22bc6968f5": {
+    "title": "Diablo II",
+    "category": "RPG",
+    "maxLevel": "99",
+    "imageUrl": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2021/02/Diablo-2-Classes-Resurrected.jpg",
+    "summary": "Diablo II is an action RPG where players control heroes to battle demons and monsters across different environments. The game features five distinct character classes, randomly generated levels, and a dark storyline revolving around the Lord of Terror, Diablo. It became a classic for its immersive gameplay and multiplayer mode.",
+    "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+    "comments": [],
+    "_id": "2f776370-494b-4d6a-a4ca-cd22bc6968f5"
+  },
+  "bf3cb9f4-53fa-455e-be02-4c0c0b58865c": {
+    "title": "Warcraft III",
+    "category": "RPG",
+    "maxLevel": "20",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/6/66/WarcraftIII.jpg/220px-WarcraftIII.jpg",
+    "summary": "Warcraft III is a real-time strategy game where players control one of several factions, including humans, orcs, undead, and night elves, to battle for dominance. Featuring a rich storyline, strategic gameplay, and innovative hero units, it introduced dynamic campaigns and multiplayer modes, influencing future strategy games and esports.",
+    "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+    "comments": [],
+    "_id": "bf3cb9f4-53fa-455e-be02-4c0c0b58865c"
+  }
+}
