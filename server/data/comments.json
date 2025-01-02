@@ -1,0 +1,28 @@
+{
+  "be7a577f-62a1-448a-ab58-fe8d523afde4": {
+    "aa271b57-9c4a-4096-8a00-cd04bb436134": {
+      "owner": "admin@abv.bg",
+      "text": "Old School CS. Great!",
+      "_id": "aa271b57-9c4a-4096-8a00-cd04bb436134"
+    },
+    "f4aa1042-9f15-4f70-9845-b7da9e3636ae": {
+      "owner": "admin@abv.bg",
+      "text": "Where can I play online?",
+      "_id": "f4aa1042-9f15-4f70-9845-b7da9e3636ae"
+    }
+  },
+  "2f776370-494b-4d6a-a4ca-cd22bc6968f5": {
+    "9c4c97fd-a7ce-4796-8f5e-7409a226aedc": {
+      "owner": "admin@abv.bg",
+      "text": "Is it still some server for PvP?",
+      "_id": "9c4c97fd-a7ce-4796-8f5e-7409a226aedc"
+    }
+  },
+  "bf3cb9f4-53fa-455e-be02-4c0c0b58865c": {
+    "d2083e01-0188-4c88-96ac-84fa9b75b58b": {
+      "owner": "admin@abv.bg",
+      "text": "Anyone for 4 vs 4 players?",
+      "_id": "d2083e01-0188-4c88-96ac-84fa9b75b58b"
+    }
+  }
+}
