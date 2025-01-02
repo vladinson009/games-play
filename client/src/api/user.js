@@ -5,7 +5,7 @@ function login(email, password) {
 }
 function register(email, password, repass) {
   if (password !== repass) {
-    throw new Error('Passwords do not match');
+    throw new Error('Passwords does not match');
   }
   return fetchApi.post('/users/register', { email, password });
 }
