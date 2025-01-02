@@ -1,29 +1,63 @@
-export default function RegisterPage() {
+import { useState, useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
+import sessionContext from '../../util/sessionContext';
+import ErrorModal from '../ErrorModal';
+import userApi from '../../api/user';
+import { getSession, setSession } from '../../util/sesionStorage';
+
+export default function RegisterPage() {
+    const [error, setError] = useState(null);
+    const [userData, setUserData] = useState({ email: '', password: '', 'confirm- password': '' });
+
+    const navigate = useNavigate();
+    const sessionCtx = useContext(sessionContext);
+
+    async function onSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+
+        const { email, password, "confirm-password": repass } = Object.fromEntries(formData);
+        try {
+            const user = await userApi.register(email, password, repass);
+            setSession(user);
+            sessionCtx.setSession(getSession());
+            navigate('/');
+        } catch (err) {
+            setError(err.message);
+        }
+    }
     return (
-        // < !--Register Page(Only for Guest users ) -->
         <section id="register-page" className="content auth">
-            <form id="register">
+            {error && <ErrorModal error={{ error, onClose }} />}
+            <form onSubmit={onSubmit} id="register">
                 <div className="container">
                     <div className="brand-logo"></div>
                     <h1>Register</h1>
 
                     <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="maria@email.com" />
+                    <input value={userData.email} onChange={onChange} type="email" id="email" name="email" placeholder="maria@email.com" />
 
                     <label htmlFor="pass">Password:</label>
-                    <input type="password" name="password" id="register-password" />
+                    <input value={userData.password} onChange={onChange} type="password" name="password" id="register-password" />
 
                     <label htmlFor="con-pass">Confirm Password:</label>
-                    <input type="password" name="confirm-password" id="confirm-password" />
+                    <input value={userData.repass} onChange={onChange} type="password" name="confirm-password" id="confirm-password" />
 
                     <input className="btn submit" type="submit" value="Register" />
 
                     <p className="field">
-                        <span>If you already have profile click <a href="#">here</a></span>
+                        <span>If you already have profile click <Link href="/users/login">here</Link></span>
                     </p>
                 </div>
             </form>
         </section>
     )
+    function onClose() {
+        setError(null);
+    }
+    function onChange(e) {
+        const { name, value } = e.target;
+        setUserData({ ...userData, [name]: value });
+    }
 }
