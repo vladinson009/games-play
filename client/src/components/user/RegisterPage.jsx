@@ -15,11 +15,8 @@ export default function RegisterPage() {
 
     async function onSubmit(e) {
         e.preventDefault();
-        const formData = new FormData(e.target);
-
-        const { email, password, "confirm-password": repass } = Object.fromEntries(formData);
         try {
-            const user = await userApi.register(email, password, repass);
+            const user = await userApi.register(userData.email, userData.password, userData.repass);
             setSession(user);
             sessionCtx.setSession(getSession());
             navigate('/');
@@ -47,7 +44,7 @@ export default function RegisterPage() {
                     <input className="btn submit" type="submit" value="Register" />
 
                     <p className="field">
-                        <span>If you already have profile click <Link href="/users/login">here</Link></span>
+                        <span>If you already have profile click <Link to="/users/login">here</Link></span>
                     </p>
                 </div>
             </form>
