@@ -15,10 +15,8 @@ export default function LoginPage() {
 
     async function onSubmit(e) {
         e.preventDefault();
-        const formData = new FormData(e.target);
-        const { email, password } = Object.fromEntries(formData);
         try {
-            const user = await userApi.login(email, password);
+            const user = await userApi.login(userData.email, userData.password);
             setSession(user);
             sessionCtx.setSession(getSession());
             navigate('/');
