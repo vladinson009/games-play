@@ -15,18 +15,17 @@ export default function CataloguePage() {
         })()
     }, [])
 
-
     return (
         <section id="catalog-page">
             <h1>All Games</h1>
             {isLoading ? <div>...Loading</div> : games.length > 0
-                ? games.map(game => (
-                    <div key={game._id} className="allGames">
+                ? games.map(el => (
+                    <div key={el._id} className="allGames">
                         <div className="allGames-info">
-                            <img src={game.imageUrl} />
-                            <h6>{game.category}</h6>
-                            <h2>{game.title}</h2>
-                            <Link to={`/games/details/${game._id}`} className="details-button">Details</Link>
+                            <img src={el.imageUrl} />
+                            <h6>{el.category}</h6>
+                            <h2>{el.title}</h2>
+                            <Link to={`/games/details/${el._id}`} className="details-button">Details</Link>
                         </div>
                     </div>))
                 : <h3 className="no-articles">No articles yet</h3>}
