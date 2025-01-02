@@ -32,7 +32,7 @@ function App() {
           <Route path="/games">
             <Route path="catalogue" element={<CataloguePage />} />
             <Route path="create" element={<CreatePage />} />
-            <Route path="details" element={<DetailsPage />} />
+            <Route path="details/:gameId" element={<DetailsPage />} />
             <Route path="edit" element={<EditPage />} />
           </Route>
           <Route path="/users">
