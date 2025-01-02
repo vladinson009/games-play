@@ -1,30 +1,55 @@
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { useState, useEffect, useContext } from "react"
 
 import gameApi from "../../api/game"
 import sessionContext from "../../util/sessionContext"
 export default function DetailsPage() {
     const { gameId } = useParams()
-    const [game, setGame] = useState({})
     const { session } = useContext(sessionContext)
-    const isCreator = session.userId === game._ownerId
+
+    const [game, setGame] = useState({})
+    const [comment, setComment] = useState("")
+    const [error, setError] = useState(null)
+
+
+    const isCreator = session._id === game._ownerId
 
     useEffect(() => {
         (async function () {
-            const response = await gameApi.getGameById(gameId);
+            const [response, comments] = await Promise.all([
+                gameApi.getGameById(gameId),
+                gameApi.getComments(gameId)
+            ])
+            response.comments = Object.values(comments);
             setGame(response)
         })()
     }, [])
 
+    async function onComment(e) {
+        e.preventDefault();
+        const newComment = {
+            owner: session.email,
+            text: comment
+        }
+        try {
+            const response = await gameApi.addComment(gameId, newComment)
+            setGame({ ...game, comments: [...game.comments, response] })
+            setComment("")
 
+
+        } catch (error) {
+            setError(error.message)
+        }
+    }
     return (
         //   < !--Details Page-- >
         <section id="game-details">
             <h1>Game Details</h1>
+            {error && <div className="error">{error}</div>}
             <div className="info-section">
                 <div className="game-header">
                     <img className="game-img" src={game.imageUrl} />
-                    <h1>Bright</h1>
+                    <h1>{game.title}</h1>
                     <span className="levels">MaxLevel: {game.maxLevel}</span>
                     <p className="type">{game.category}</p>
                 </div>
@@ -36,33 +61,32 @@ export default function DetailsPage() {
                     <h2>Comments:</h2>
                     <ul>
                         {/* <!-- list all comments for current game (If any) --> */}
-                        <li className="comment">
-                            <p>Content: I rate this one quite highly.</p>
-                        </li>
-                        <li className="comment">
-                            <p>Content: The best game.</p>
-                        </li>
+                        {game.comments?.length > 0 ? game.comments.map(el => <li key={el._id} className="comment">
+                            <p>{el.owner}: {el.text}</p>
+                        </li>) : <p className="no-comment">No comments.</p>}
                     </ul>
-                    {/* // <!-- Display paragraph: If there are no games in the database --> */}
-                    <p className="no-comment">No comments.</p>
                 </div>
 
                 {/* // <!-- Edit/Delete buttons ( Only for creator of this game )  --> */}
-                <div className="buttons">
-                    <a href="#" className="button">Edit</a>
-                    <a href="#" className="button">Delete</a>
-                </div>
+                {isCreator && <div className="buttons">
+                    <Link to={`/games/edit/${gameId}`} state={game} className="button">Edit</Link>
+                    <Link to={`/games/delete/${gameId}`} className="button">Delete</Link>
+                </div>}
             </div>
 
             {/* // <!-- Bonus --> */}
             {/* // <!-- Add Comment ( Only for logged-in users, which is not creators of the current game ) --> */}
-            <article className="create-comment">
+            {!isCreator && session._id && <article className="create-comment">
                 <label>Add new comment:</label>
-                <form className="form">
-                    <textarea name="comment" placeholder="Comment......"></textarea>
+                <form onSubmit={onComment} className="form">
+                    <textarea value={comment} onChange={onChange} name="comment" placeholder="Comment......"></textarea>
                     <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
-            </article>
+            </article>}
         </section>
     )
+    function onChange(e) {
+        const value = e.target.value;
+        setComment(value);
+    }
 }
