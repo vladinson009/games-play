@@ -1368,6 +1368,55 @@
     sessions: {},
   };
   var seedData = {
+    games: {
+      'be7a577f-62a1-448a-ab58-fe8d523afde4': {
+        title: 'Counter Strike',
+        category: 'First-person',
+        maxLevel: '1',
+        imageUrl: 'https://loadcs.com/images/full/hl_2022-10-16_23-37-57-320.jpg',
+        summary:
+          'Counter-Strike 1.5 is a tactical first-person shooter where teams of terrorists and counter-terrorists battle to complete objectives, such as planting or defusing bombs, or rescuing hostages. Released in 2002, it became a highly influential multiplayer game, emphasizing strategy, teamwork, and skillful shooting in fast-paced, competitive matches.',
+        _ownerId: '35c62d76-8152-4626-8712-eeb96381bea8',
+        _id: 'be7a577f-62a1-448a-ab58-fe8d523afde4',
+        _createdOn: 1736112625081,
+      },
+      '2f776370-494b-4d6a-a4ca-cd22bc6968f5': {
+        title: 'Diablo II',
+        category: 'RPG',
+        maxLevel: '99',
+        imageUrl:
+          'https://static0.gamerantimages.com/wordpress/wp-content/uploads/2021/02/Diablo-2-Classes-Resurrected.jpg',
+        summary:
+          'Diablo II is an action RPG where players control heroes to battle demons and monsters across different environments. The game features five distinct character classes, randomly generated levels, and a dark storyline revolving around the Lord of Terror, Diablo. It became a classic for its immersive gameplay and multiplayer mode.',
+        _ownerId: '35c62d76-8152-4626-8712-eeb96381bea8',
+        _id: '2f776370-494b-4d6a-a4ca-cd22bc6968f5',
+        _createdOn: 1736112626515,
+      },
+      'bf3cb9f4-53fa-455e-be02-4c0c0b58865c': {
+        title: 'Warcraft III',
+        category: 'RPG',
+        maxLevel: '20',
+        imageUrl:
+          'https://upload.wikimedia.org/wikipedia/en/thumb/6/66/WarcraftIII.jpg/220px-WarcraftIII.jpg',
+        summary:
+          'Warcraft III is a real-time strategy game where players control one of several factions, including humans, orcs, undead, and night elves, to battle for dominance. Featuring a rich storyline, strategic gameplay, and innovative hero units, it introduced dynamic campaigns and multiplayer modes, influencing future strategy games and esports.',
+        _ownerId: '35c62d76-8152-4626-8712-eeb96381bea8',
+        _id: 'bf3cb9f4-53fa-455e-be02-4c0c0b58865c',
+        _createdOn: 1736112627580,
+      },
+      '73f2d3a3-8cc4-45ce-9583-c6d02f577409': {
+        _ownerId: '847ec027-f659-4086-8032-5173e2f9c93a',
+        title: 'GTA San Andreas',
+        category: 'Action',
+        maxLevel: '99',
+        imageUrl:
+          'https://posterwa.com/cdn/shop/files/GAMES8_88fee65b-3c95-4b4d-accc-1b098cfbb2ad.jpg?v=1713855915',
+        summary:
+          'GTA: San Andreas follows Carl "CJ" Johnson, who returns to his hometown of Los Santos after his mother\'s murder. He gets entangled in gang wars, corruption, and crime while striving to restore his family\'s former glory. The game features an open world, rich storyline, and diverse gameplay.',
+        _createdOn: 1736112831945,
+        _id: '73f2d3a3-8cc4-45ce-9583-c6d02f577409',
+      },
+    },
     recipes: {
       '3927279d-0ad4-4afb-8ca9-5b256ae3b298': {
         _ownerId: '35c62d76-8152-4626-8712-eeb96381bea8',
@@ -1419,12 +1468,61 @@
       },
     },
     comments: {
-      '0a272c58-b7ea-4e09-a000-7ec988248f66': {
-        _ownerId: '35c62d76-8152-4626-8712-eeb96381bea8',
-        content: 'Great recipe!',
-        recipeId: '8f414b4f-ab39-4d36-bedb-2ad69da9c830',
-        _createdOn: 1614260681375,
-        _id: '0a272c58-b7ea-4e09-a000-7ec988248f66',
+      '3c430427-1dac-4731-b936-177ee3b85586': {
+        _ownerId: '60f0cf0b-34b0-4abd-9769-8c42f830dffc',
+        _gameId: 'be7a577f-62a1-448a-ab58-fe8d523afde4',
+        owner: 'admin@abv.bg',
+        text: 'Very good first-person shooter!\n',
+        _createdOn: 1736111638945,
+        _id: '3c430427-1dac-4731-b936-177ee3b85586',
+      },
+      'e0c52945-e17d-4b67-8de9-9e76ca08fab9': {
+        _ownerId: '60f0cf0b-34b0-4abd-9769-8c42f830dffc',
+        _gameId: '2f776370-494b-4d6a-a4ca-cd22bc6968f5',
+        owner: 'admin@abv.bg',
+        text: 'The best RPG game ever!',
+        _createdOn: 1736111649184,
+        _id: 'e0c52945-e17d-4b67-8de9-9e76ca08fab9',
+      },
+      'c68eac68-a356-4950-b37b-08e4d10ed827': {
+        _ownerId: '60f0cf0b-34b0-4abd-9769-8c42f830dffc',
+        _gameId: 'bf3cb9f4-53fa-455e-be02-4c0c0b58865c',
+        owner: 'admin@abv.bg',
+        text: 'Its fun to play with friends!',
+        _createdOn: 1736111662039,
+        _id: 'c68eac68-a356-4950-b37b-08e4d10ed827',
+      },
+      '532a1d1d-7407-47f0-be9a-7a5367d86199': {
+        _ownerId: '60f0cf0b-34b0-4abd-9769-8c42f830dffc',
+        _gameId: 'bf3cb9f4-53fa-455e-be02-4c0c0b58865c',
+        owner: 'admin@abv.bg',
+        text: 'What about dota?',
+        _createdOn: 1736111670930,
+        _id: '532a1d1d-7407-47f0-be9a-7a5367d86199',
+      },
+      '75159502-5cdc-49b0-b93a-3372d1d3abbf': {
+        _ownerId: '847ec027-f659-4086-8032-5173e2f9c93a',
+        _gameId: 'be7a577f-62a1-448a-ab58-fe8d523afde4',
+        owner: 'george@abv.bg',
+        text: 'Yes I agree',
+        _createdOn: 1736112176392,
+        _id: '75159502-5cdc-49b0-b93a-3372d1d3abbf',
+      },
+      'd46dae5e-ac6d-483b-92bb-343603b7cec1': {
+        _ownerId: '847ec027-f659-4086-8032-5173e2f9c93a',
+        _gameId: '2f776370-494b-4d6a-a4ca-cd22bc6968f5',
+        owner: 'george@abv.bg',
+        text: 'Thats the spirit',
+        _createdOn: 1736112192694,
+        _id: 'd46dae5e-ac6d-483b-92bb-343603b7cec1',
+      },
+      '565d98bf-ce9f-4592-a9e2-072c7eb96e77': {
+        _ownerId: '847ec027-f659-4086-8032-5173e2f9c93a',
+        _gameId: 'bf3cb9f4-53fa-455e-be02-4c0c0b58865c',
+        owner: 'george@abv.bg',
+        text: 'Wohoo',
+        _createdOn: 1736112211081,
+        _id: '565d98bf-ce9f-4592-a9e2-072c7eb96e77',
       },
     },
     records: {
