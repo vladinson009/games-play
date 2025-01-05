@@ -28,7 +28,7 @@ export default function CreatePage() {
             imageUrl,
             summary,
             _ownerId: session._id,
-            comments: [],
+            _createdOn: Date.now(),
         }
         try {
             const response = await gameApi.createGame(game);
