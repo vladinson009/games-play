@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react"
 
 import gameApi from "../../api/game"
 import sessionContext from "../../util/sessionContext"
+import ErrorModal from "../ErrorModal"
 export default function DetailsPage() {
     const { gameId } = useParams()
     const { session } = useContext(sessionContext)
@@ -22,17 +23,21 @@ export default function DetailsPage() {
             ])
             response.comments = Object.values(comments);
             setGame(response)
+
+
         })()
     }, [])
 
     async function onComment(e) {
         e.preventDefault();
         const newComment = {
+            _gameId: gameId,
+            _ownerId: session._id,
             owner: session.email,
             text: comment
         }
         try {
-            const response = await gameApi.addComment(gameId, newComment)
+            const response = await gameApi.addComment(newComment)
             setGame({ ...game, comments: [...game.comments, response] })
             setComment("")
 
@@ -41,11 +46,12 @@ export default function DetailsPage() {
             setError(error.message)
         }
     }
+
     return (
         //   < !--Details Page-- >
         <section id="game-details">
             <h1>Game Details</h1>
-            {error && <div className="error">{error}</div>}
+            {error && <ErrorModal error={{ error, onClose }} />}
             <div className="info-section">
                 <div className="game-header">
                     <img className="game-img" src={game.imageUrl} />
@@ -88,5 +94,8 @@ export default function DetailsPage() {
     function onChange(e) {
         const value = e.target.value;
         setComment(value);
+    }
+    function onClose() {
+        setError(null);
     }
 }
