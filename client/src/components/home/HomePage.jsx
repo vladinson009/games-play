@@ -9,8 +9,8 @@ export default function HomePage() {
     useEffect(() => {
         setIsLoading(true);
         (async function () {
-            const response = await gameApi.getAllGames()
-            const recentGames = Object.values(response).reverse().slice(0, 3);
+            const response = await gameApi.getRecentGames()
+            const recentGames = Object.values(response)
             setGames(recentGames)
             setIsLoading(false);
 
