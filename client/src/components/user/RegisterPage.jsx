@@ -1,29 +1,10 @@
-import { useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import sessionContext from '../../util/sessionContext';
 import ErrorModal from '../ErrorModal';
-import userApi from '../../api/user';
-import { getSession, setSession } from '../../util/sesionStorage';
-
+import useRegister from "../../hooks/user/useRegister";
 export default function RegisterPage() {
-    const [error, setError] = useState(null);
-    const [userData, setUserData] = useState({ email: '', password: '', 'confirm- password': '' });
+    const { error, setError, userData, setUserData, onSubmit } = useRegister()
 
-    const navigate = useNavigate();
-    const sessionCtx = useContext(sessionContext);
-
-    async function onSubmit(e) {
-        e.preventDefault();
-        try {
-            const user = await userApi.register(userData.email, userData.password, userData.repass);
-            setSession(user);
-            sessionCtx.setSession(getSession());
-            navigate('/');
-        } catch (err) {
-            setError(err.message);
-        }
-    }
     return (
         <section id="register-page" className="content auth">
             {error && <ErrorModal error={{ error, onClose }} />}
