@@ -1,19 +1,8 @@
-import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-
-import game from "../../api/game"
+import useGetAll from '../../hooks/game/useGetAllGames'
 
 export default function CataloguePage() {
-    const [games, setGames] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
-    useEffect(() => {
-        setIsLoading(true);
-        (async function () {
-            const response = await game.getAllGames()
-            setGames(Object.values(response))
-            setIsLoading(false);
-        })()
-    }, [])
+    const { games, isLoading } = useGetAll()
 
     return (
         <section id="catalog-page">
